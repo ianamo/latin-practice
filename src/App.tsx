@@ -51,7 +51,7 @@ function App() {
               <Typography variant="h5" color="text.secondary" gutterBottom>
                 Select a declension to practice
               </Typography>
-              <DeclensionPractice onDeclensionSelect={(declension) => {}} />
+              <DeclensionPractice onDeclensionSelect={(_declension) => {}} />
             </>
           ) : (
             <VerbPractice />
