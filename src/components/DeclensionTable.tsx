@@ -1,6 +1,7 @@
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { declensionEndings } from '../data/declensions';
+import { stripMacrons } from '../data/stripMacrons';
 
 interface DeclensionTableProps {
   declension: number;
@@ -33,7 +34,7 @@ const DeclensionTable = ({ declension }: DeclensionTableProps) => {
 
   const checkAnswer = (caseName: string, number: string, answer: string) => {
     const correctAnswer = declensionEndings[declension][caseName][number.toLowerCase() as 'singular' | 'plural'];
-    return answer.toLowerCase() === correctAnswer.toLowerCase();
+    return stripMacrons(answer) === stripMacrons(correctAnswer);
   };
 
   return (

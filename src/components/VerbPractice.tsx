@@ -1,6 +1,7 @@
 import { Box, Paper, Typography, Button, ButtonGroup, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { verbEndings } from '../data/verbEndings';
+import { stripMacrons } from '../data/stripMacrons';
 
 const tenses = [
   { key: 'present', label: 'Present' },
@@ -45,7 +46,7 @@ const VerbPractice = () => {
 
   const checkAnswer = (person: string, answer: string) => {
     const correct = (verbEndings as any)[selectedVoice][selectedTense][person];
-    return answer.toLowerCase() === correct.toLowerCase();
+    return stripMacrons(answer) === stripMacrons(correct);
   };
 
   return (
