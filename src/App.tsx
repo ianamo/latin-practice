@@ -19,12 +19,7 @@ const theme = createTheme({
 });
 
 function App() {
-  //const [currentDeclension, setCurrentDeclension] = useState(1);
   const [practiceType, setPracticeType] = useState<'noun' | 'verb'>('noun');
-
-  const handleDeclensionSelect = (declension: number) => {
-    setCurrentDeclension(declension);
-  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -56,7 +51,7 @@ function App() {
               <Typography variant="h5" color="text.secondary" gutterBottom>
                 Select a declension to practice
               </Typography>
-              <DeclensionPractice onDeclensionSelect={handleDeclensionSelect} />
+              <DeclensionPractice />
             </>
           ) : (
             <VerbPractice />
